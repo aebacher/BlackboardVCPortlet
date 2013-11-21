@@ -18,6 +18,7 @@
  */
 package org.jasig.portlet.blackboardvcportlet.mvc.sessionmngr;
 
+import java.util.Map;
 import java.util.Set;
 
 import javax.portlet.PortletRequest;
@@ -81,6 +82,11 @@ public class ViewSessionController
     	if(WindowState.NORMAL.equals(request.getWindowState())) {
 	    	return viewController.view(request, model, null, null);
 	    }
+    	
+    	@SuppressWarnings("unchecked")
+		Map<String, String> userInfo = (Map <String, String>) request.getAttribute(PortletRequest.USER_INFO);
+    	
+    	model.addAttribute("ismemberof",userInfo.get("ismemberof"));
     	
         final Session session = this.sessionService.getSession(sessionId);
                 

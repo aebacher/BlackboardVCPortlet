@@ -222,9 +222,9 @@
 	</tr>
 </table>
 
-<c:if test="${!empty prefs['ismemberof'][0]}">
+<c:if test="${!empty ismemberof}">
 	<div class="ismemberof">
-	  ${prefs['ismemberof'][0]}
+	  ${ismemberof}
 	</div>
 </c:if>   
 
