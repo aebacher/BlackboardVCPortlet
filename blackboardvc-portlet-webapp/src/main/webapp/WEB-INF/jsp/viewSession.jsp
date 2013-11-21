@@ -220,7 +220,13 @@
 			</c:choose>
 		</td>
 	</tr>
-</table>   
+</table>
+
+<c:if test="${!empty prefs['ismemberof'][0]}">
+	<div class="ismemberof">
+	  ${prefs['ismemberof'][0]}
+	</div>
+</c:if>   
 
 <script type="text/javascript">
 (function($) {

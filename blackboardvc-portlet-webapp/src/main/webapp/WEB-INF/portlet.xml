@@ -115,6 +115,10 @@
         <name>wiscedupvi</name>
     </user-attribute>
     
+    <user-attribute>
+        <name>ismemberof</name>
+    </user-attribute>
+    
     <filter>
         <filter-name>springSecurityPortletFilterChain</filter-name>
         <filter-class>org.jasig.springframework.web.portlet.filter.DelegatingPortletFilterProxy</filter-class>
