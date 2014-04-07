@@ -53,7 +53,8 @@
 	            <form:input path="sessionName" style="width: 50%;" class="uportal-input-text" />&nbsp;&nbsp;<form:errors path="sessionName" cssClass="error"/>
 	          </c:when>
 	          <c:otherwise>
-	            <form:input path="sessionName" readonly="true"/>
+	            <form:input type="hidden" path="sessionName" readonly="true"/>
+                  <c:out value="${sessionForm.sessionName}"/>
 	          </c:otherwise>
 	        </c:choose>
         </td>
