@@ -6,6 +6,7 @@ import org.jasig.portlet.blackboardvcportlet.dao.SessionRecordingDao;
 import org.jasig.portlet.blackboardvcportlet.dao.ws.RecordingWSDao;
 import org.jasig.portlet.blackboardvcportlet.data.SessionRecording;
 import org.jasig.portlet.blackboardvcportlet.service.RecordingService;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -85,5 +86,16 @@ public class RecordingServiceImpl implements RecordingService {
             //Recording doesn't exist on the BB side, remove our local DB version
         }
         this.recordingDao.deleteRecording(sessionRecording);
+    }
+    
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public void datafixRecordings(DateTime startDate, DateTime endDate) {
+       //fetch the recording long information from the web service
+        List<BlackboardRecordingLongResponse> recordingLongList = recordingWSDao.getRecordingLong(null, null, null, null, startDate.getMillis(), endDate.getMillis(), null);
+        for(BlackboardRecordingLongResponse recordingResponse : recordingLongList) {
+            //post the information to the database
+            recordingDao.createOrUpdateRecording(recordingResponse);
+        }
+        
     }
 }
