@@ -1,6 +1,11 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-
+<div class="alert alert-info" style='margin: 1em;'>
+    <p>
+        <spring:message code="instruction.format" text="<b>Format:</b> mm-dd-yyyy. IE: 09-19-1983" htmlEscape='false' /><br/><br/>
+        <spring:message code="instruction.recordingdatafix" text="This job collects all recordings from start date to end date, then goes through to see if they exist in the local cache database. If it doesn't exist it creates the record."/>
+    </p>
+</div>
 <div>
     <span class="uportal-channel-strong"><spring:message code="startDate" text="Start Date"/></span>
     <span><input id="startDate"></input></span>
@@ -9,7 +14,7 @@
     <span class="uportal-channel-strong"><spring:message code="endDate" text="End Date"/></span>
     <span><input id="endDate"></input></span>
 </div>
-<div class="alert alert-info">Format mm-dd-yyyy. IE: 09-19-1983</div>
+
 <div id="recordingGoButtonDiv">
     <span><button id="recordingGo" type="button" class="btn btn-default">Go</button></span>
 </div>
