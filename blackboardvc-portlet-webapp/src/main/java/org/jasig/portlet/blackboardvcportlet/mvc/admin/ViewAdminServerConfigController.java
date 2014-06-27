@@ -10,6 +10,8 @@ import org.jasig.portlet.blackboardvcportlet.service.ServerConfigurationService;
 import org.jasig.portlet.blackboardvcportlet.service.ServerQuotaService;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,6 +27,7 @@ public class ViewAdminServerConfigController {
 	private ServerConfigurationService serverConfigService;
 	private ServerQuotaService serverQuotaService;
 	private RecordingService recordingService;
+	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	public void setServerConfigurationService(ServerConfigurationService service) {
@@ -65,7 +68,9 @@ public class ViewAdminServerConfigController {
 	    DateTime ed = DateTime.parse(endDate, DateTimeFormat.forPattern("MM-dd-YYYY"));
 	    
 	    if(sd != null && ed != null) {
-	        recordingService.datafixRecordings(sd, ed);
+	        int errd = recordingService.datafixRecordings(sd, ed);
+	        if(errd > 0)
+	            logger.warn("During datafixRecording, " + errd + " failed to insert");
 	    } else {
 	        response.setProperty(ResourceResponse.HTTP_STATUS_CODE, "400");
             response.setProperty("X-Status-Reason", "Validation failed");

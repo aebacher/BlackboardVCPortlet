@@ -36,5 +36,5 @@ public interface RecordingService {
 	
 	void removeRecording(long recordingId);
 	
-	void datafixRecordings(DateTime startDate, DateTime endDate);
+	int datafixRecordings(DateTime startDate, DateTime endDate);
 }
