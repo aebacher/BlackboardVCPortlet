@@ -25,7 +25,7 @@
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot config-telephony">
 <c:if test="${!empty prefs['helpUrl'][0]}">
     <div class="help-link">
-      <a href="${prefs['helpUrl'][0]}" target="_blank" class="uportal-button"><spring:message code="help" text="help"/></a>
+      <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
     </div>
 </c:if>
 
@@ -141,17 +141,17 @@
 	  <tr>
 		<td>
 			<spring:message code="saveTelephony" var="saveTelephony" text="Save Telephony"/>
-			<input class="uportal-button" value="${saveTelephony}" type="submit">
+			<input class="btn btn-default uportal-button" value="${saveTelephony}" type="submit">
 		</td>
 		<td>
-			<a href="${viewSessionUrl}" class="uportal-button"><spring:message code="cancel" text="cancel"/></a>
+			<a href="${viewSessionUrl}" class="btn btn-default uportal-button"><spring:message code="cancel" text="cancel"/></a>
 		</td>
 		<td>
 			<portlet:actionURL var="deleteTelephonyURL" portletMode="EDIT">
 				<portlet:param name="sessionId" value="${session.sessionId}" />
 				<portlet:param name="action" value="deleteTelephony" />
 			</portlet:actionURL>
-			<a href="${deleteTelephonyURL}" class="uportal-button"><spring:message code="deleteTelephony" text="Use Default Telephony"/></a>
+			<a href="${deleteTelephonyURL}" class="btn btn-default uportal-button"><spring:message code="deleteTelephony" text="Use Default Telephony"/></a>
 		</td>
            </tr>
 	  </tfoot>

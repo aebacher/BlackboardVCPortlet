@@ -26,11 +26,11 @@
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
 	<div class="help-link">
-	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="uportal-button"><spring:message code="help" text="help"/></a>
+	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
 	</div>
 </c:if>
 <portlet:renderURL var="backUrl" portletMode="VIEW" />
-<a href="${backUrl}" class="uportal-button">&lt; Back to Session List</a>
+<a href="${backUrl}" class="btn btn-default uportal-button">&lt; Back to Session List</a>
 <br/>
 <table class="viewSession">
   <tbody>
@@ -42,16 +42,16 @@
 		    <portlet:param name="sessionId" value="${session.sessionId}" />
 		    <portlet:param name="action" value="editSession" />
 		  </portlet:renderURL>
-  		  <a href="${editSessionUrl}" class="uportal-button"><spring:message code="editSession" text="Edit Session"/></a>
+  		  <a href="${editSessionUrl}" class="btn btn-default uportal-button"><spring:message code="editSession" text="Edit Session"/></a>
 		  </sec:authorize>
 		</th>
 		</tr>
-    <tr><td  class="label"><span class="uportal-channel-strong"><spring:message code="sessionName" text="sessionName"/></span></td><td>${session.sessionName}</td></tr>
-    <tr class="even"><td  class="label" ><span class="uportal-channel-strong"><spring:message code="startTime" text="startTime"/></span></td><td><joda:format value="${session.startTime}" pattern="MM/dd/yyyy HH:mm z" /></td></tr>
-    <tr><td  class="label"><span class="uportal-channel-strong"><spring:message code="endTime" text="endTime"/></span></td><td><joda:format value="${session.endTime}" pattern="MM/dd/yyyy HH:mm z" /></td></tr>
+    <tr><td><label for="sessionName"><span class="uportal-channel-strong"><spring:message code="sessionName" text="sessionName"/></span></label></td><td>${session.sessionName}</td></tr>
+    <tr class="even"><td><label for="startTime"><span class="uportal-channel-strong"><spring:message code="startTime" text="startTime"/></span></label></td><td><joda:format value="${session.startTime}" pattern="MM/dd/yyyy HH:mm z" /></td></tr>
+    <tr><td><label for="endTime"><span class="uportal-channel-strong"><spring:message code="endTime" text="endTime"/></span></label></td><td><joda:format value="${session.endTime}" pattern="MM/dd/yyyy HH:mm z" /></td></tr>
     <tr class="even">
     	<spring:message code="statusText" text="statusText" var="statusText" htmlEscape="false" />
-    	<td class="label"><span class="uportal-channel-strong"><spring:message code="status" text="Status"/></span>&nbsp;<a href="#" title="${ statusText}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a></td>
+    	<td><label for="status"><span class="uportal-channel-strong"><spring:message code="status" text="Status"/></span>&nbsp;<a href="#" title="${ statusText}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a></label></td>
     	<td>
     		<c:choose>
 		       <c:when test="${session.endTime.beforeNow}">
@@ -72,25 +72,29 @@
     </tr>
     <sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
       <tr>
-      	<td class="label">
-      		<span class="uportal-channel-strong">
-      			<spring:message code="moderatorLink" text="moderatorLink"/>
-      		</span>
-      		<br/>
-      		<span class="uportal-channel-table-caption"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
-     	</td>
-     	<td><a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a></td></tr>
+        <td>
+            <label for="moderatorLinkDesc">
+                <span class="uportal-channel-strong">
+                    <spring:message code="moderatorLink" text="moderatorLink"/>
+                </span>
+                <br/>
+                <span class="uportal-channel-table-caption"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
+            </label>
+        </td>
+        <td><a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a></td></tr>
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
       <tr class="even">
-      	<td class="label">
-      		<span class="uportal-channel-strong">
-      			<spring:message code="guestLink" text="guestLink"/>
-      		</span>
-      		<br/>
-      		<span class="uportal-channel-table-caption"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
-      	</td>
-      	<td><a href="${session.guestUrl}" target="_blank">${session.guestUrl}</a></td></tr>
+        <td>
+            <label for="guestLink">
+                <span class="uportal-channel-strong">
+                    <spring:message code="guestLink" text="guestLink"/>
+                </span>
+                <br/>
+                <span class="uportal-channel-table-caption"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
+            </label>
+        </td>
+        <td><a href="${session.guestUrl}" target="_blank">${session.guestUrl}</a></td></tr>
     </sec:authorize>
   </tbody>
 </table>
@@ -105,7 +109,7 @@
 						<portlet:param name="sessionId" value="${session.sessionId}" />
 					    <portlet:param name="action" value="configureTelephony" />
 					</portlet:renderURL>
-					<a href="${configTelephonyURL }" class="uportal-button">Configure Telephony</a>
+					<a href="${configTelephonyURL }" class="btn btn-default uportal-button">Configure Telephony</a>
 				</sec:authorize>
 			</th>
 		</tr>
@@ -114,10 +118,12 @@
 				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 					<!-- Only want to see chair number/pin if chair -->
 					<tr class="even">
-						<td class="label">
-							<span class="uportal-channel-strong">
-								<spring:message code="moderatorPhone" text="Moderator Phone" />
-							</span>
+						<td>
+                            <label for="moderatorPhone">
+                                <span class="uportal-channel-strong">
+                                    <spring:message code="moderatorPhone" text="Moderator Phone" />
+                                </span>
+                            </label>
 						</td>
 						<td>
 							${sessionTelephony.chairPhone }<c:if test="${!empty sessionTelephony.chairPIN }">&nbsp;PIN: ${sessionTelephony.chairPIN }</c:if>
@@ -125,20 +131,24 @@
 					</tr>
 				</sec:authorize>
 				<tr class="odd">
-					<td class="label">
-						<span class="uportal-channel-strong">
-							<spring:message code="participantPhone" text="Participant Phone" />
-						</span>
+					<td>
+                        <label for="participantPhone">
+                            <span class="uportal-channel-strong">
+                                <spring:message code="participantPhone" text="Participant Phone" />
+                            </span>
+                        </label>
 					</td>
 					<td>
 						${sessionTelephony.nonChairPhone } <c:if test="${!empty sessionTelephony.nonChairPIN }">&nbsp;PIN:&nbsp;${sessionTelephony.nonChairPIN }</c:if>
 					</td>
 				</tr>
 				<tr class="even">
-					<td class="label">
-						<span class="uportal-channel-strong">
-							<spring:message code="SIPPhone" text="SIP Phone" />
-						</span>
+					<td>
+                        <label for="SIPPhone">
+                            <span class="uportal-channel-strong">
+                                <spring:message code="SIPPhone" text="SIP Phone" />
+                            </span>
+                        </label>
 					</td>
 					<td>
 						${sessionTelephony.sessionSIPPhone } <c:if test="${!empty sessionTelephony.sessionPIN }">&nbsp;PIN:&nbsp;${sessionTelephony.sessionPIN }</c:if>
@@ -158,13 +168,15 @@
 	<tr>
 		<th colspan="2" style="text-align :left;"><spring:message code="additionalInfo" text="Additional Information"/></th>
 	</tr>
-	<tr>
-		<td class="label">
-			<span class="uportal-channel-strong">
-				<spring:message code="participants" text="participants"/>
-			</span>
-			<spring:message code="tooltip.participants" text="tooltip.participants" var="tooltipParticipants" htmlEscape="false" />
-			&nbsp;<a href="#" title="${ tooltipParticipants}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+	<tr class="even">
+		<td>
+            <label for="particpants">
+                <span class="uportal-channel-strong">
+                    <spring:message code="participants" text="participants"/>
+                </span>
+                <spring:message code="tooltip.participants" text="tooltip.participants" var="tooltipParticipants" htmlEscape="false" />
+                &nbsp;<a href="#" title="${ tooltipParticipants}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+            </label>
 		</td>
 		<td>
 			<ul>
@@ -181,19 +193,21 @@
 				    <portlet:param name="sessionId" value="${session.sessionId}" />
 				    <portlet:param name="action" value="addParticipants" />
 				</portlet:renderURL>
-		    	<a href="${addParticipantsUrl}" class="uportal-button">Invite / Edit Participant(s)</a>
+		    	<a href="${addParticipantsUrl}" class="btn btn-default uportal-button">Invite / Edit Participant(s)</a>
 			</sec:authorize>		
 		</td>
 	</tr>
 	<tr class="odd">
-		<td class="label">
-			<span class="uportal-channel-strong">
-				<spring:message code="presentationFile" text="Presentation File" />
-			</span>
-			<spring:message code="tooltip.presentationFile" text="tooltip.presentationFile" var="tooltipPresentationFile" htmlEscape="false" />
-			&nbsp;<a href="#" title="${ tooltipPresentationFile}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
-			<br/>
-			<span class="uportal-channel-table-caption"><spring:message code="presentationFileDesc" text="" /></span>
+		<td>
+            <label for="presentationFile">
+                <span class="uportal-channel-strong">
+                    <spring:message code="presentationFile" text="Presentation File" />
+                </span>
+                <spring:message code="tooltip.presentationFile" text="tooltip.presentationFile" var="tooltipPresentationFile" htmlEscape="false" />
+                &nbsp;<a href="#" title="${ tooltipPresentationFile}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+                <br/>
+                <span class="uportal-channel-table-caption"><spring:message code="presentationFileDesc" text="" /></span>
+            </label>
 		</td>
 		<td>
 			<portlet:actionURL portletMode="EDIT" var="managePresentationActionUrl" />
@@ -216,24 +230,29 @@
 			  </c:otherwise>
 			  </c:choose>
 			  <br/>
-			  <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
+              <span class="btn btn-default uploadButton">
+			     <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
+              </span>
+              <br/>
               <c:if test="${!empty presentationUploadError}">
                   <span class="error">${presentationUploadError}</span>
               </c:if>
               <spring:message code="uploadPresentation" var="uploadPresentation" text="uploadPresentation"/>
-           	  <input value="${uploadPresentation}" name="action" class="uportal-button" type="submit">
+           	  <input value="${uploadPresentation}" name="action" class="btn btn-default uportal-button" type="submit">
            	</form>
 		</td>
 	</tr>
 	<tr class="even">
-		<td class="label">
-			<span class="uportal-channel-strong">
-				<spring:message code="mediaFiles" text="Media Files" />
-			</span>
-			<spring:message code="tooltip.mediaFiles" text="tooltip.mediaFiles" var="tooltipMediaFiles" htmlEscape="false" />
-			&nbsp;<a href="#" title="${ tooltipMediaFiles}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
-			<br/>
-			<span class="uportal-channel-table-caption"><spring:message code="mediaFilesDesc" text="" /></span>
+		<td>
+            <label for="mediaFiles">
+                <span class="uportal-channel-strong">
+                    <spring:message code="mediaFiles" text="Media Files" />
+                </span>
+                <spring:message code="tooltip.mediaFiles" text="tooltip.mediaFiles" var="tooltipMediaFiles" htmlEscape="false" />
+                &nbsp;<a href="#" title="${ tooltipMediaFiles}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+                <br/>
+                <span class="uportal-channel-table-caption"><spring:message code="mediaFilesDesc" text="" /></span>
+            </label>
 		</td>
 		<td>
 			<c:choose>
@@ -253,16 +272,18 @@
 			    <portlet:param name="sessionId" value="${session.sessionId}" />
 			    <portlet:param name="action" value="manageMediaFiles" />
 			</portlet:renderURL>
-	    	<a href="${addMediaFileUrl}" class="uportal-button">Upload Media File(s)</a>
+	    	<a href="${addMediaFileUrl}" class="btn btn-default uportal-button">Upload Media File(s)</a>
 		</td>
 	</tr>
 	<tr class="odd">
-		<td class="label">
-			<span class="uportal-channel-strong">
-				<spring:message code="recordings" text="Recordings" />
-			</span>
-			<spring:message code="tooltip.recordings" text="tooltip.recordings" var="tooltipRecordings" htmlEscape="false" />
-			&nbsp;<a href="#" title="${ tooltipRecordings}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+		<td>
+            <label for="recordings">
+                <span class="uportal-channel-strong">
+                    <spring:message code="recordings" text="Recordings" />
+                </span>
+                <spring:message code="tooltip.recordings" text="tooltip.recordings" var="tooltipRecordings" htmlEscape="false" />
+                &nbsp;<a href="#" title="${ tooltipRecordings}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+            </label>
 		</td>
 		<td>
 			<c:choose>

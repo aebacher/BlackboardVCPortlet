@@ -25,7 +25,7 @@
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
     <div class="help-link">
-      <a href="${prefs['helpUrl'][0]}" target="_blank" class="uportal-button"><spring:message code="help" text="help"/></a>
+      <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
     </div>
 </c:if>
 
@@ -82,11 +82,11 @@
       </td>
     </tr>
     <tr>
-      <td colspan="2" align="left"><button class="uportal-button" name="deleteSelected">Delete Selected</button></td>
-      <td colspan="2" align="right"><button class="uportal-button" name="addParticipant">Add Participant</button></td>
+      <td colspan="2" align="left"><button class="btn btn-default uportal-button" name="deleteSelected">Delete Selected</button></td>
+      <td colspan="2" align="right"><button class="btn btn-default uportal-button" name="addParticipant">Add Participant</button></td>
     </tr>
     <tr>
-      <td colspan="4" align="left"><a href="${viewSessionUrl}" class="uportal-button">Complete</a></td>
+      <td colspan="4" align="left"><a href="${viewSessionUrl}" class="btn btn-default uportal-button">Complete</a></td>
     </tr>
   </tfoot>
 </table>

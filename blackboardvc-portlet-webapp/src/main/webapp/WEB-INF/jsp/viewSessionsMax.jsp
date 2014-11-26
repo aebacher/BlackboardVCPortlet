@@ -29,11 +29,11 @@
     <tbody>
       <tr>
         <td align="right" colspan="3">
-    		<a href="${createSessionUrl }" id="create-user" class="uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
+    		<a href="${createSessionUrl }" id="create-user" class="btn btn-default uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
        </td>
         <td align="right" width="2em" colspan="1">
         <c:if test="${!empty prefs['helpUrl'][0]}">
-        	<a href="${prefs['helpUrl'][0]}" target="_blank" class="uportal-button"><spring:message code="help" text="help"/></a>
+        	<a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
         </c:if>
         </td>
       </tr>
@@ -54,13 +54,13 @@
 	      			<option value="CUR">All Sessions in Current Year</option>
 	      			<option value="LAST">All Sessions Last Year</option>
 	      		</select>
-	      		<input value="Find Sessions" style="text-transform: none;" class="uportal-button" type="submit" />
+	      		<input value="Find Sessions" style="text-transform: none;" class="btn btn-default uportal-button" type="submit" />
 	      	</td>
 	      	<td style="font-weight:bold; text-align: right; width:20em;">
 	      		Search by <br/>Keyword
 	      	</td>
 	      	<td>
-	      		<input type="text" name="keyword" /><input value="Search Sessions" style="text-transform: none;" class="uportal-button" type="submit" />
+	      		<input type="text" name="keyword" /><input value="Search Sessions" style="text-transform: none;" class="btn btn-default uportal-button" type="submit" />
 	      	</td>
       	</form>
       </tr>
@@ -98,7 +98,7 @@
 		            <spring:message code="deleteSession" var="deleteSession" text="deleteSession"/>
 		            <spring:message code="areYouSureYouWantToDeleteSession" var="areYouSureYouWantToDeleteSession" text="areYouSureYouWantToDeleteSession"/>
 		          <input id="dialog-confirm" value="${deleteSession}" name="Delete"
-		            style="text-transform: none;" class="uportal-button"
+		            style="text-transform: none;" class="btn btn-default uportal-button"
 		            onclick="javascript:return confirm('${areYouSureYouWantToDeleteSession}');"
 		            type="submit" />
 		            <c:if test="${!empty deleteSessionError}">
@@ -139,7 +139,7 @@
 		            <spring:message code="deleteSession" var="deleteSession" text="deleteSession"/>
 		            <spring:message code="areYouSureYouWantToDeleteSession" var="areYouSureYouWantToDeleteSession" text="areYouSureYouWantToDeleteSession"/>
 		          <input id="dialog-confirm" value="${deleteSession}" name="Delete"
-		            style="text-transform: none;" class="uportal-button"
+		            style="text-transform: none;" class="btn btn-default uportal-button"
 		            onclick="javascript:return confirm('${areYouSureYouWantToDeleteSession}');"
 		            type="submit" />
 		            <c:if test="${!empty deleteSessionError}">

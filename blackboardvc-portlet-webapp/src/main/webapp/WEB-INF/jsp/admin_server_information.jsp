@@ -171,7 +171,7 @@
         	<portlet:renderURL var="viewAllSessions" portletMode="VIEW" windowState="MAXIMIZED">
         		<portlet:param name="action" value="viewAllSessions"/>
             </portlet:renderURL>
-        	<a href="${viewAllSessions}" class="uportal-button"><spring:message code="viewAllSessions" text="viewAllSessions" /></a>
+        	<a href="${viewAllSessions}" class="btn btn-default uportal-button"><spring:message code="viewAllSessions" text="viewAllSessions" /></a>
         </div>
     </div>
 </div>

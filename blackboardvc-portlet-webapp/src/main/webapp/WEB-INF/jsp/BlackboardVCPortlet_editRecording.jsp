@@ -66,11 +66,11 @@
         <tr>
           <td>
             <spring:message code="saveRecording" var="saveRecording" text="saveRecording"/>
-            <input class="uportal-button" value="${saveRecording}" type="submit">
+            <input class="btn btn-default uportal-button" value="${saveRecording}" type="submit">
           </td>
           <td>
             <portlet:renderURL var="cancelAction" portletMode="VIEW" windowState="NORMAL" />
-            <a href="${cancelAction}" class="uportal-button"><spring:message code="cancel" text="cancel"/></a>
+            <a href="${cancelAction}" class="btn btn-default uportal-button"><spring:message code="cancel" text="cancel"/></a>
           </td>
         </tr>
       </tbody>

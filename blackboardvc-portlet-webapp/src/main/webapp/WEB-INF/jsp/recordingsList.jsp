@@ -37,7 +37,7 @@
                     <spring:message code="deleteRecording" var="deleteRecording" text="deleteRecording"/>
                     <spring:message code="areYouSureYouWantToDeleteRecording" var="areYouSureYouWantToDeleteRecording" text="areYouSureYouWantToDeleteRecording"/>
                     <input id="dialog-confirm" value="${deleteRecording}" name="Delete"
-                           style="text-transform: none;" class="uportal-button"
+                           style="text-transform: none;" class="btn btn-default uportal-button"
                            onclick="javascript:return confirm('${areYouSureYouWantToDeleteRecording}');"
                            type="submit" />
                 </td>
@@ -94,7 +94,7 @@ blackboardPortlet.jQuery(function() {
         <json:property name="editLink">
           <sec:authorize access="hasPermission(#recording, 'edit')">
             <spring:message code="edit" var="edit" text="edit"/>
-            <a href="${editRecordingUrl}" class="uportal-button">${edit}</a>
+            <a href="${editRecordingUrl}" class="btn btn-default uportal-button">${edit}</a>
           </sec:authorize>
         </json:property>
 	    </json:array>

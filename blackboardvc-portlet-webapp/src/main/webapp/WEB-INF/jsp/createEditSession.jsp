@@ -25,7 +25,7 @@
 <div id="${n}" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
 	<div class="help-link">
-	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="uportal-button"><spring:message code="help" text="help"/></a>
+	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
 	</div>
 </c:if>
 <div class="uportal-channel-subtitle"><spring:message code="scheduleSession" text="scheduleSession"/></div>
@@ -227,11 +227,11 @@
             <tr>
                 <td>
                     <spring:message code="saveSession" var="saveSession" text="saveSession"/>
-                  <input class="uportal-button" value="${saveSession}" type="submit">
+                  <input class="btn btn-default uportal-button" value="${saveSession}" type="submit">
                 </td>
                 <td>
                   <portlet:renderURL var="cancelAction" portletMode="VIEW" windowState="NORMAL" />
-                  <a href="${cancelAction}" class="uportal-button"><spring:message code="cancel" text="cancel"/></a>
+                  <a href="${cancelAction}" class="btn btn-default uportal-button"><spring:message code="cancel" text="cancel"/></a>
                 </td>
             </tr>
         </tbody>
