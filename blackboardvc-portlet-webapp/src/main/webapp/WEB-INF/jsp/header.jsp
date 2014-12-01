@@ -24,5 +24,9 @@ div[id^="${n}"] .uploadButton input[type=file]{
      cursor: inherit;
 }
 
+div[id^="${n}"] a{
+    color: #900;
+}
+
 </style>
 
