@@ -277,3 +277,9 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     padding-right:2em;
 }
   
+.blackboardVCRoot.config-telephony p.telephony-info {
+    padding: 0 1em 1em 1em;
+    font-size : small;
+    text-align: left;
+    
+}

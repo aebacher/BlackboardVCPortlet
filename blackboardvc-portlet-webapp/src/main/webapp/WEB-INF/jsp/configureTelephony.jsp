@@ -58,8 +58,11 @@
 		<table class="telephony">
 		  <thead>
 		    <tr>
-		      <th colspan="2" style="text-align: left;">
-		        <h3><spring:message code="label.manageTelephony" text="Manage Telephony" /></h3>
+		      <th colspan="2">
+		        <h2 style='text-align: center;'><spring:message code="label.manageTelephony" text="Manage Telephony" /></h2>
+                <p class='bg-info telephony-info'>
+                    Sessions can be configured to use a teleconference service, either provided by the vendor or alternative option (e.g., UW-Extension WisLine service). This will allow users to connect via a telephone and allows interaction with the session participants. The default option is a service provided by Blackboard which will require that participants who opt to use it will incur toll charges. Otherwise, you may configure your session to use an alternative teleconference service (e.g. WisLine Anytime).
+                </p>
 		      </th>
 		    </tr>
 		  </thead>
