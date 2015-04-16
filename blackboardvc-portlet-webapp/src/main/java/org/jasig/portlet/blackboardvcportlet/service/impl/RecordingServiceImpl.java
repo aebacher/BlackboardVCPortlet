@@ -1,7 +1,11 @@
 package org.jasig.portlet.blackboardvcportlet.service.impl;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 
+import org.jasig.portlet.blackboardvcportlet.dao.JobMutexDao;
 import org.jasig.portlet.blackboardvcportlet.dao.SessionRecordingDao;
 import org.jasig.portlet.blackboardvcportlet.dao.ws.RecordingWSDao;
 import org.jasig.portlet.blackboardvcportlet.data.SessionRecording;
@@ -25,11 +29,18 @@ public class RecordingServiceImpl implements RecordingService {
 	
 	private RecordingWSDao recordingWSDao;
 	private SessionRecordingDao recordingDao;
+	private JobMutexDao jobMutexDao;
+	private static final String RECORDING_DATA_FIX = "RECORDING_DATA_FIX";
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	public void setRecordingWSDao (RecordingWSDao recordingWSDao) {
 		this.recordingWSDao = recordingWSDao;
+	}
+	
+	@Autowired
+	public void setJobMutexDao (JobMutexDao dao) {
+	  this.jobMutexDao = dao;
 	}
 	
 	@Autowired
@@ -127,14 +138,20 @@ public class RecordingServiceImpl implements RecordingService {
     
     /**
      * Run cron job every day at 10am
+     * @throws UnknownHostException 
      */
     @Scheduled(cron = "0 0 10 * * *")
     @Override
-    public void cronDatafixRecordings() {
-      DateTime now = DateTime.now();
-      //run 2 days into the past, just in case yesterday ran
-      logger.debug("Ran job 'cronDatafixRecordings' on " + now);
-      int[] ret = datafixRecordings(now.minusDays(2), now, true);
-      logger.debug("Job 'cronDatafixRecordings' started: " + now + " and finished: " + DateTime.now() + ". Results: processed: "+ret[0]+" added : "+ret[1]+" erred: "+ret[2]+". See you tomorrow.");
+    public void cronDatafixRecordings() throws UnknownHostException {
+      if(jobMutexDao.startMutex(RECORDING_DATA_FIX, InetAddress.getLocalHost().getHostName())) {
+        DateTime now = DateTime.now();
+        //run 2 days into the past, just in case yesterday ran
+        logger.debug("Ran job 'cronDatafixRecordings' on " + now);
+        int[] ret = datafixRecordings(now.minusDays(2), now, true);
+        logger.debug("Job 'cronDatafixRecordings' started: " + now + " and finished: " + DateTime.now() + ". Results: processed: "+ret[0]+" added : "+ret[1]+" erred: "+ret[2]+". See you tomorrow.");
+        jobMutexDao.stopMutex(RECORDING_DATA_FIX);
+      } else {
+        logger.debug("Job " + RECORDING_DATA_FIX + " running on another server.");
+      }
     }
 }

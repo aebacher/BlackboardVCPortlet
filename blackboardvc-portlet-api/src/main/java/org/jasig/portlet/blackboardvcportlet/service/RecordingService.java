@@ -18,6 +18,8 @@
  */
 package org.jasig.portlet.blackboardvcportlet.service;
 
+import java.net.UnknownHostException;
+
 import org.jasig.portlet.blackboardvcportlet.data.SessionRecording;
 import org.joda.time.DateTime;
 
@@ -44,5 +46,5 @@ public interface RecordingService {
      */
     int[] datafixRecordings(DateTime startDate, DateTime endDate);
 
-    void cronDatafixRecordings();
+    void cronDatafixRecordings() throws UnknownHostException;
 }
