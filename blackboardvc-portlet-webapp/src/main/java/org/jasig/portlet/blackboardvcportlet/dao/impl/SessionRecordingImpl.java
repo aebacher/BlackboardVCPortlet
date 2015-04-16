@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import org.apache.commons.io.FileUtils;
@@ -79,6 +80,9 @@ public class SessionRecordingImpl implements SessionRecording {
     @ManyToOne(targetEntity = SessionImpl.class, optional = false)
     @JoinColumn(name = "SESSION_ID", nullable = false)
     private final SessionImpl session;
+    
+    @Transient
+    private boolean created = false;
     
     /**
      * Needed by hibernate
@@ -178,6 +182,14 @@ public class SessionRecordingImpl implements SessionRecording {
 
     public void setRoomName(String roomName) {
         this.roomName = roomName;
+    }
+    
+    public boolean isCreated() {
+      return created;
+    }
+    
+    public void setCreated(boolean created) {
+      this.created = created;
     }
 
     @Override

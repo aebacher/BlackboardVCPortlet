@@ -2,7 +2,6 @@ package org.jasig.portlet.blackboardvcportlet.service.impl;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
 import org.jasig.portlet.blackboardvcportlet.dao.SessionRecordingDao;
 import org.jasig.portlet.blackboardvcportlet.dao.ws.RecordingWSDao;
 import org.jasig.portlet.blackboardvcportlet.data.SessionRecording;
@@ -12,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -93,19 +93,48 @@ public class RecordingServiceImpl implements RecordingService {
     }
     
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public int datafixRecordings(DateTime startDate, DateTime endDate) {
-       int countErred = 0;
+    @Override
+    public int[] datafixRecordings(DateTime startDate, DateTime endDate) {
+      return datafixRecordings(startDate, endDate, false);
+    }
+    
+    /**
+     * 
+     * @param startDate beginning datetime
+     * @param endDate end datetime
+     * @param cron ran from cron?
+     * @return returns a int[3]. int[0] is number of recordings processed. int[1] is how many added to local cache that were missing. int[2] is how many erred.
+     */
+    private int[] datafixRecordings(DateTime startDate, DateTime endDate, boolean cron) {
+       int[] returnArray = {0,0,0};
        //fetch the recording long information from the web service
         List<BlackboardRecordingLongResponse> recordingLongList = recordingWSDao.getRecordingLong(null, null, null, null, startDate.getMillis(), endDate.getMillis(), null);
+        returnArray[0] = recordingLongList != null ? recordingLongList.size() : 0;
         for(BlackboardRecordingLongResponse recordingResponse : recordingLongList) {
             try{
                 //post the information to the database
-                recordingDao.createOrUpdateRecording(recordingResponse);
+                SessionRecording recording = recordingDao.createOrUpdateRecording(recordingResponse);
+                if(recording.isCreated()) {
+                  returnArray[1]++;
+                }
             } catch (Exception ex) {
                 logger.error("Error adding datafix for recording: " + recordingResponse.getRecordingId() + " for session : " + recordingResponse.getSessionId(), ex);
-                countErred++;
+                returnArray[2]++;
             }
         }
-        return countErred;
+        return returnArray;
+    }
+    
+    /**
+     * Run cron job every day at 10am
+     */
+    @Scheduled(cron = "0 0 10 * * *")
+    @Override
+    public void cronDatafixRecordings() {
+      DateTime now = DateTime.now();
+      //run 2 days into the past, just in case yesterday ran
+      logger.debug("Ran job 'cronDatafixRecordings' on " + now);
+      int[] ret = datafixRecordings(now.minusDays(2), now, true);
+      logger.debug("Job 'cronDatafixRecordings' started: " + now + " and finished: " + DateTime.now() + ". Results: processed: "+ret[0]+" added : "+ret[1]+" erred: "+ret[2]+". See you tomorrow.");
     }
 }

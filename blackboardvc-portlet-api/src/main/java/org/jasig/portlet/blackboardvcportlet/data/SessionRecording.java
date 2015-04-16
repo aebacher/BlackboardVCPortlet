@@ -34,5 +34,7 @@ public interface SessionRecording extends Serializable {
     long getBbRecordingId();
 
     long getRecordingId();
+    
+    boolean isCreated();
 
 }
