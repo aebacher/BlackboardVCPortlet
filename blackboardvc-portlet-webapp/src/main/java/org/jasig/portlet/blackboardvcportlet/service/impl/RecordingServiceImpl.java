@@ -143,6 +143,7 @@ public class RecordingServiceImpl implements RecordingService {
     @Scheduled(cron = "0 0 10 * * *")
     @Override
     public void cronDatafixRecordings() throws UnknownHostException {
+      try {
       if(jobMutexDao.startMutex(RECORDING_DATA_FIX, InetAddress.getLocalHost().getHostName())) {
         DateTime now = DateTime.now();
         //run 2 days into the past, just in case yesterday ran
@@ -152,6 +153,10 @@ public class RecordingServiceImpl implements RecordingService {
         jobMutexDao.stopMutex(RECORDING_DATA_FIX);
       } else {
         logger.debug("Job " + RECORDING_DATA_FIX + " running on another server.");
+      }
+      } catch (Exception ex) {
+        logger.error("Issue running " + RECORDING_DATA_FIX + ". Going to attempt to stop mutex",ex);
+        jobMutexDao.stopMutex(RECORDING_DATA_FIX); //really try to stop it so it can run again next time
       }
     }
 }
