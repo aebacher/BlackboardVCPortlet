@@ -74,6 +74,7 @@ public class SessionRecordingDaoImpl extends BaseJpaDao implements SessionRecord
         if (recording == null) {
             recording = new SessionRecordingImpl(bbRecordingId, session);
             logger.debug("Inserting new Recording for recording ID: " + bbRecordingId + " bbSessionId: " + session.getBbSessionId());
+            recording.setCreated(true);
         }
         
         recording.setCreationDate(DaoUtils.toDateTime(recordingLongResponse.getCreationDate()));

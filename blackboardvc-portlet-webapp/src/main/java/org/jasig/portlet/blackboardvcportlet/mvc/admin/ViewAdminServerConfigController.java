@@ -68,9 +68,10 @@ public class ViewAdminServerConfigController {
 	    DateTime ed = DateTime.parse(endDate, DateTimeFormat.forPattern("MM-dd-YYYY"));
 	    
 	    if(sd != null && ed != null) {
-	        int errd = recordingService.datafixRecordings(sd, ed);
-	        if(errd > 0)
-	            logger.warn("During datafixRecording, " + errd + " failed to insert");
+	        int[] status = recordingService.datafixRecordings(sd, ed);
+	        model.addAttribute("status", status);
+	        if(status[2] > 0)
+	            logger.warn("During datafixRecording, " + status[2] + " failed to insert");
 	    } else {
 	        response.setProperty(ResourceResponse.HTTP_STATUS_CODE, "400");
             response.setProperty("X-Status-Reason", "Validation failed");

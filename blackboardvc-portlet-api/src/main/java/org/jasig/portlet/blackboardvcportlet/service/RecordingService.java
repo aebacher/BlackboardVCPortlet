@@ -18,6 +18,8 @@
  */
 package org.jasig.portlet.blackboardvcportlet.service;
 
+import java.net.UnknownHostException;
+
 import org.jasig.portlet.blackboardvcportlet.data.SessionRecording;
 import org.joda.time.DateTime;
 
@@ -28,13 +30,21 @@ import org.joda.time.DateTime;
  * @author Richard Good
  */
 public interface RecordingService {
-	void updateSessionRecordings(long sessionId, long startTime, long endTime);
-	
-	SessionRecording getSessionRecording(long recordingId);
-	
-	void updateSessionRecordingName(long recordingId, String roomName);
-	
-	void removeRecording(long recordingId);
-	
-	int datafixRecordings(DateTime startDate, DateTime endDate);
+    void updateSessionRecordings(long sessionId, long startTime, long endTime);
+    
+    SessionRecording getSessionRecording(long recordingId);
+    
+    void updateSessionRecordingName(long recordingId, String roomName);
+    
+    void removeRecording(long recordingId);
+    
+    /**
+     * Repairs local cache of recordings
+     * @param startDate The beginning date you wish to process
+     * @param endDate The end date you wish to process
+     * @return returns a int[3]. int[0] is number of recordings processed. int[1] is how many added to local cache. int[2] is how many erred.
+     */
+    int[] datafixRecordings(DateTime startDate, DateTime endDate);
+
+    void cronDatafixRecordings() throws UnknownHostException;
 }

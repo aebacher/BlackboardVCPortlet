@@ -57,7 +57,7 @@
                 success: function (request, text){
                     $("#recordingGo").prop('disabled',false);
                     $('#loading').remove();
-                    $("#recordingGoButtonDiv").append('<span><div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Datafix completed successfully.</div></span>');
+                    $("#recordingGoButtonDiv").append('<span><div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Datafix completed successfully. Processed : '+ request.status[0] +'; Added Missing : '+ request.status[1] +'; Erred: '+ request.status[2] +'</div></span>');
                 },
                 error: function(request, text, error) {
                     //Leaving the Go button disabled on purpose.

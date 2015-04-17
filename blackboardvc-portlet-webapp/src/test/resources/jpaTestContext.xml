@@ -39,6 +39,7 @@
     <bean class="org.jasig.portlet.blackboardvcportlet.dao.impl.SessionRecordingDaoImpl" />
     <bean class="org.jasig.portlet.blackboardvcportlet.dao.impl.SessionTelephonyDaoImpl" />
     <bean class="org.jasig.portlet.blackboardvcportlet.dao.impl.UserSessionUrlDaoImpl" />
+    <bean class="org.jasig.portlet.blackboardvcportlet.dao.impl.JobMutexImpl"/>
     
                         
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
