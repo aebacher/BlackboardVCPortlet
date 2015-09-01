@@ -51,11 +51,11 @@ public class SessionForm implements Serializable {
     private int maxTalkers;
 	private int maxCameras;
 	private boolean mustBeSupervised;
-	private boolean permissionsOn;
+	private boolean permissionsOn = true;
 	private boolean raiseHandOnEnter;
 	private RecordingMode recordingMode;
 	private boolean hideParticipantNames;
-	private boolean allowInSessionInvites;
+	private boolean allowInSessionInvites = true;
 
 	private DateMidnight startDate;
 	
