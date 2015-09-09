@@ -28,48 +28,21 @@
 <table width="100%">
     <tbody>
       <tr>
-        <td align="right" colspan="3">
-    		<a href="${createSessionUrl }" id="create-user" class="btn btn-default uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
+        <td align="left" colspan="3">
+          <a href="${createSessionUrl }" id="create-user" class="btn btn-flat uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
        </td>
         <td align="right" width="2em" colspan="1">
         <c:if test="${!empty prefs['helpUrl'][0]}">
-        	<a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
+          <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-outline uportal-button"><spring:message code="help" text="help"/></a>
         </c:if>
         </td>
       </tr>
-      <tr style="display: none;">
-      	<portlet:actionURL portletMode="VIEW" var="filterSessionsUrl">
-		  <portlet:param name="action" value="filterSessions" />
-		</portlet:actionURL>
-		<form name="filterSessions" action="${filterSessionsUrl}" method="post">
-	      	<td style="font-weight:bold; text-align: right; width:20em;">
-	      		<spring:message code="find" text="find" htmlEscape="false"/>
-	      	</td>
-	      	<td style="width:10em;">
-	      		<select>
-	      			<option value="ALL">All Sessions</option>
-	      			<option value="30">All Sessions Next 30 Days</option>
-	      			<option value="60">All Sessions Next 60 Days</option>
-	      			<option value="90">All Sessions Next 90 Days</option>
-	      			<option value="CUR">All Sessions in Current Year</option>
-	      			<option value="LAST">All Sessions Last Year</option>
-	      		</select>
-	      		<input value="Find Sessions" style="text-transform: none;" class="btn btn-default uportal-button" type="submit" />
-	      	</td>
-	      	<td style="font-weight:bold; text-align: right; width:20em;">
-	      		Search by <br/>Keyword
-	      	</td>
-	      	<td>
-	      		<input type="text" name="keyword" /><input value="Search Sessions" style="text-transform: none;" class="btn btn-default uportal-button" type="submit" />
-	      	</td>
-      	</form>
-      </tr>
     </tbody>
   </table>
-<div id="${n}tabs">
-  <ul>
-    <li><a href="#${n}tabs-1">Upcoming Sessions</a></li>
-    <li><a href="#${n}tabs-2">Completed Sessions</a></li>
+<div id="${n}tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
+    <li class="ui-state-default ui-corner-top"><a href="#${n}tabs-1">Upcoming</a></li>
+    <li class="ui-state-default ui-corner-top"><a href="#${n}tabs-2">Completed</a></li>
   </ul>
 <div id="${n}tabs-1">
 <portlet:actionURL portletMode="EDIT" var="deleteSessionActionUrl">
@@ -109,7 +82,7 @@
       </table>
     </c:when>
     <c:otherwise>
-      <b>No sessions available</b>
+      <b>There are no upcoming web conferences.</b>
     </c:otherwise>
   </c:choose>
 </form>
@@ -150,7 +123,7 @@
       </table>
     </c:when>
     <c:otherwise>
-      <b>No sessions available</b>
+      <b>There are no historical web conferences.</b>
     </c:otherwise>
   </c:choose>
 </form>
@@ -169,11 +142,16 @@ blackboardPortlet.jQuery(function() {
 				if(!sessionStorage.getItem(currentWCPTab)){
 						sessionStorage.setItem(currentWCPTab, 0);
 				}
+				ui.tab.addClass('ui-tabs-selected');
 			},
 			active: sessionStorage.getItem(currentWCPTab),
 			activate: function(event, ui){
 					var currentTab = $("#${n}tabs").tabs("option", "active");
 					sessionStorage.setItem(currentWCPTab, currentTab);
+					
+					//new styles :|
+					ui.oldTab.removeClass('ui-tabs-selected');
+					ui.newTab.addClass('ui-tabs-selected');
 				}
 		}	  
   );
