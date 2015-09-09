@@ -25,7 +25,7 @@
 
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="MAXIMIZED" />
-<table width="100%">
+<table width="100%" style='margin-bottom: 10px;'>
     <tbody>
       <tr>
         <td align="left" colspan="3">

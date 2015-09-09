@@ -26,7 +26,7 @@
 
 <portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="MAXIMIZED" />
 <portlet:renderURL var="maxViewURL" portletMode="VIEW" windowState="MAXIMIZED"/>
-<table width="100%">
+<table width="100%" style='margin-bottom: 10px;'>
     <tbody>
       <tr>
         <td align="left">
