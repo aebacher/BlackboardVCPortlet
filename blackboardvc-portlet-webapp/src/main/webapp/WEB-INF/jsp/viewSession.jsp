@@ -309,6 +309,14 @@
    });			
 })(blackboardPortlet.jQuery);
 </script>
+<c:if test="${newSessionMessage eq 'true' }">
+<script type="text/javascript">
+(function($) {
+    $('.blackboardVCRoot').before("<div class='blackboardVCRoot-notification-success'>Session created Successfully</div>");
+    $('.blackboardVCRoot-notification-success').click(function(){$('.blackboardVCRoot-notification-success').fadeOut();});
+})(up.jQuery);
+</script>
+</c:if>
 
 </div>
 </div>
