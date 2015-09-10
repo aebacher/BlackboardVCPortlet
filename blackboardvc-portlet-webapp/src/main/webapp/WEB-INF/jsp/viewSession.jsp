@@ -309,10 +309,10 @@
    });			
 })(blackboardPortlet.jQuery);
 </script>
-<c:if test="${newSessionMessage eq 'true' }">
+<c:if test="${saveMessage eq 'true' }">
 <script type="text/javascript">
 (function($) {
-    $('.blackboardVCRoot').before("<div class='blackboardVCRoot-notification-success'>Session created Successfully</div>");
+    $('.blackboardVCRoot').before("<div class='blackboardVCRoot-notification-success'>The web conference has been saved.</div>");
     $('.blackboardVCRoot-notification-success').click(function(){$('.blackboardVCRoot-notification-success').fadeOut();});
 })(up.jQuery);
 </script>

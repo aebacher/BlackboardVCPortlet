@@ -203,7 +203,7 @@ public class SessionCreateEditController
 			response.setPortletMode(PortletMode.VIEW);
 	        response.setRenderParameter("sessionId", Long.toString(returnedSession.getSessionId()));
 	        response.setRenderParameter("action", "viewSession");
-	        response.setRenderParameter("newSessionMessage", Boolean.toString(session.isNewSession()));
+	        response.setRenderParameter("saveMessage", "true");
 		}
 	}
     

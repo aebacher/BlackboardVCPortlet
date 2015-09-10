@@ -87,7 +87,7 @@ public class ViewSessionController
 	    @RequestParam long sessionId, 
 	    ModelMap model, 
 	    @RequestParam(required = false) String presentationUploadError,
-	    @RequestParam(required = false) String newSessionMessage)	{
+	    @RequestParam(required = false) String saveMessage)	{
     	
     	if(WindowState.NORMAL.equals(request.getWindowState())) {
 	        return viewController.view(request, model, null, null);
@@ -123,8 +123,8 @@ public class ViewSessionController
 			model.addAttribute("presentationUploadError", presentationUploadError);
 		}
         
-        if(newSessionMessage != null) {
-          model.addAttribute("newSessionMessage", newSessionMessage);
+        if(saveMessage != null) {
+          model.addAttribute("saveMessage", saveMessage);
         }
 
         return "viewSession";
