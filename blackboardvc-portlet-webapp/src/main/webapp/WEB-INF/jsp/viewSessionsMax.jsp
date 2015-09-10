@@ -54,7 +54,7 @@
       <table width="100%" id="sessionList">
         <thead>
           <tr class="uportal-channel-table-header">
-            <th class="dt" style="width: 1em;"><input id="${n}selectAllSessions" value="selectAllSessions" name="selectAllSessions" type="checkbox" /></th>
+            <th class="dt" style="width: 1em;"><input id="${n}selectAllSessions-new" value="selectAllSessions" name="selectAllSessions" type="checkbox" /></th>
             <th class="dt" ><spring:message code="sessionName" text="sessionName"/></th>
             <th class="dt" ><spring:message code="startDateAndTime" text="startDateAndTime"/></th>
             <th class="dt" ><spring:message code="endDateAndTime" text="endDateAndTime"/></th>
@@ -95,7 +95,7 @@
       <table width="100%" id="completedSessionList">
         <thead>
           <tr class="uportal-channel-table-header">
-            <th style="width: 1em;"><input id="${n}selectAllSessions" value="selectAllSessions" name="selectAllSessions" type="checkbox" /></th>
+            <th style="width: 1em;"><input id="${n}selectAllSessions-old" value="selectAllSessions" name="selectAllSessions" type="checkbox" /></th>
             <th><spring:message code="sessionName" text="sessionName"/></th>
             <th><spring:message code="startDateAndTime" text="startDateAndTime"/></th>
             <th><spring:message code="endDateAndTime" text="endDateAndTime"/></th>
@@ -166,7 +166,7 @@ blackboardPortlet.jQuery(function() {
 	    
 	    <json:property name="deleteCheckbox">
 	    <sec:authorize access="hasPermission(#session, 'delete')">
-	        <input value='${session.sessionId}' class='${n}deleteSession' name='deleteSession' type='checkbox' />
+	        <input value='${session.sessionId}' class='${n}deleteSession-new' name='deleteSession' type='checkbox' />
 	    </sec:authorize>
 	    </json:property>
 	    <json:property name="sessionName">
@@ -208,7 +208,7 @@ blackboardPortlet.jQuery(function() {
 		    
 		    <json:property name="deleteCheckbox">
 		    <sec:authorize access="hasPermission(#completedSessions, 'delete')">
-		        <input value='${completedSessions.sessionId}' class='${n}deleteSession' name='deleteSession' type='checkbox' />
+		        <input value='${completedSessions.sessionId}' class='${n}deleteSession-old' name='deleteSession' type='checkbox' />
 		    </sec:authorize>
 		    </json:property>
 		    <json:property name="sessionName">
@@ -241,19 +241,35 @@ blackboardPortlet.jQuery(function() {
 		  </json:array>
 
   $(document).ready(function() {
-	  
-	$('#${n}blackboardCollaboratePortlet .${n}deleteSession').click(function() {
-	  if (!$(this).is(':checked')) {
-		$('#${n}blackboardCollaboratePortlet #${n}selectAllSessions').attr('checked', false);
-	  }
-	  else if ($('#${n}blackboardCollaboratePortlet .${n}deleteSession').not(':checked').length == 0) {
-		$('#${n}blackboardCollaboratePortlet #${n}selectAllSessions').attr('checked', true);
-	  }
-	});
-       
-    $('#${n}blackboardCollaboratePortlet #${n}selectAllSessions').click(function() {
-      $('#${n}blackboardCollaboratePortlet .${n}deleteSession').attr('checked', $(this).is(':checked'));
-    });
+    $(document).on( 'init.dt', function ( e, settings ) {
+      if(settings.sInstance === "sessionList") {
+          $('#${n}blackboardCollaboratePortlet #${n}selectAllSessions-new').click(function() {
+              $('#${n}blackboardCollaboratePortlet .${n}deleteSession-new').prop('checked', $(this).is(':checked'));
+          });
+          
+          $('#${n}blackboardCollaboratePortlet .${n}deleteSession-new').click(function() {
+              if (!$(this).is(':checked')) {
+                $('#${n}blackboardCollaboratePortlet #${n}selectAllSessions-new').prop('checked', false);
+              }
+              else if ($('#${n}blackboardCollaboratePortlet .${n}deleteSession-new').not(':checked').length == 0) {
+                $('#${n}blackboardCollaboratePortlet #${n}selectAllSessions-new').prop('checked', true);
+              }
+          });
+      } else {
+          $('#${n}blackboardCollaboratePortlet .${n}deleteSession-old').click(function() {
+              if (!$(this).is(':checked')) {
+                $('#${n}blackboardCollaboratePortlet #${n}selectAllSessions-old').prop('checked', false);
+              }
+              else if ($('#${n}blackboardCollaboratePortlet .${n}deleteSession-old').not(':checked').length == 0) {
+                $('#${n}blackboardCollaboratePortlet #${n}selectAllSessions-old').prop('checked', true);
+              }
+          });
+          
+          $('#${n}blackboardCollaboratePortlet #${n}selectAllSessions-old').click(function() {
+              $('#${n}blackboardCollaboratePortlet .${n}deleteSession-old').prop('checked', $(this).is(':checked'));
+          });
+      }
+    } );
     
     var futureTable = $('#sessionList').dataTable( {
     		"aaData": upcomingSessions,
@@ -268,27 +284,22 @@ blackboardPortlet.jQuery(function() {
     		              null
     		              ]
     		} );
-    
+    var pastTable = $('#completedSessionList').dataTable( {
+            "aaData": completedSessions,
+            "aaSorting": [[3, "desc"]],
+            "bAutoWidth" : false,
+            "bDeferRender": true,
+            "sPaginationType": "full_numbers",
+            "aoColumns": [{ "bSortable": false },
+                          null,
+                          null,
+                          null,
+                          null
+                          ]
+        });
+      
+    blackboardPortlet.showTooltip('.${n}statusLink');
   });
-  
-  var pastTable = $('#completedSessionList').dataTable( {
-		"aaData": completedSessions,
-		"aaSorting": [[3, "desc"]],
-		"bAutoWidth" : false,
-		"bDeferRender": true,
-		"sPaginationType": "full_numbers",
-		"aoColumns": [{ "bSortable": false },
-		              null,
-		              null,
-		              null,
-		              null
-		              ]
-	});
-  
-  blackboardPortlet.showTooltip('.${n}statusLink');
-  
-  
-  
 });
 })(blackboardPortlet.jQuery);
 </rs:compressJs>
