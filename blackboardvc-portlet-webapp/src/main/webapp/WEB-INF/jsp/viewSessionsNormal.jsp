@@ -26,15 +26,15 @@
 
 <portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="MAXIMIZED" />
 <portlet:renderURL var="maxViewURL" portletMode="VIEW" windowState="MAXIMIZED"/>
-<table width="100%">
+<table width="100%" style='margin-bottom: 10px;'>
     <tbody>
       <tr>
-        <td align="right">
-	    	<a href="${createSessionUrl}" id="create-user" class="btn btn-default uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
+        <td align="left">
+	    	<a href="${createSessionUrl}" id="create-user" class="btn btn-flat uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
         </td>
         <td align="right" width="2em" colspan="1">
         <c:if test="${!empty prefs['helpUrl'][0]}">
-        	<a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
+        	<a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-outline uportal-button"><spring:message code="help" text="help"/></a>
         </c:if>
         </td>
       </tr>
@@ -42,8 +42,8 @@
 </table>
 <div id="${n}tabs">
   <ul>
-    <li><a href="#${n}tabs-1">Upcoming Sessions</a></li>
-    <li><a href="#${n}tabs-2">Completed Sessions</a></li>
+    <li><a href="#${n}tabs-1">Upcoming</a></li>
+    <li><a href="#${n}tabs-2">Completed</a></li>
   </ul>
 <div id="${n}tabs-1">
 	<c:choose>
@@ -107,7 +107,7 @@
       </div>
     </c:when>
     <c:otherwise>
-      <b>No sessions available</b>
+      <b>There are no upcoming web conferences.</b>
     </c:otherwise>
   </c:choose>
 </div>
@@ -178,7 +178,7 @@
       </div>
     </c:when>
     <c:otherwise>
-      <b>No sessions available</b>
+      <b>There are no historic web conferences.</b>
     </c:otherwise>
   </c:choose>
 </div>
