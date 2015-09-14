@@ -199,8 +199,11 @@ public class SessionCreateEditController
 		else
 		{
 			final ConferenceUser conferenceUser = this.conferenceUserService.getCurrentConferenceUser();
-			this.sessionService.createOrUpdateSession(conferenceUser, session);
+			Session returnedSession = this.sessionService.createOrUpdateSession(conferenceUser, session);
 			response.setPortletMode(PortletMode.VIEW);
+	        response.setRenderParameter("sessionId", Long.toString(returnedSession.getSessionId()));
+	        response.setRenderParameter("action", "viewSession");
+	        response.setRenderParameter("saveMessage", "true");
 		}
 	}
     
