@@ -45,6 +45,7 @@
             <list>
                 <bean class="org.jasig.web.portlet.handler.MinimizedStateHandlerInterceptor" />
                 <bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor" />
+                <bean class="org.jasig.portlet.blackboardvcportlet.mvc.interceptor.WindowStateInterceptor"/>
             </list>
         </property>
     </bean>

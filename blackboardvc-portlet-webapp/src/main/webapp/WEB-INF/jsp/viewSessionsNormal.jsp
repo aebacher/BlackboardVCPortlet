@@ -24,8 +24,8 @@
 
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 
-<portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="MAXIMIZED" />
-<portlet:renderURL var="maxViewURL" portletMode="VIEW" windowState="MAXIMIZED"/>
+<portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="${windowState}"/>
+<portlet:renderURL var="maxViewURL" portletMode="VIEW" windowState="${windowState}"/>
 <table width="100%" style='margin-bottom: 10px;'>
     <tbody>
       <tr>
@@ -61,7 +61,7 @@
          </thead>
           <tbody>
           <c:forEach var="session" items="${upcomingSessions}"  begin="0" end="4" varStatus="loopStatus">
-	          <portlet:renderURL var="viewSessionUrl" windowState="MAXIMIZED">
+	          <portlet:renderURL var="viewSessionUrl" windowState="${windowState}">
 			     <portlet:param name="sessionId" value="${session.sessionId}" />
 			     <portlet:param name="action" value="viewSession" />
 		      </portlet:renderURL>
@@ -127,11 +127,11 @@
         </thead>
         <tbody>
         <c:forEach var="completedSessions" items="${completedSessions}" begin="0" end="4" varStatus="loopStatus2">
-	          <portlet:renderURL var="viewSessionUrl" windowState="MAXIMIZED">
+	          <portlet:renderURL var="viewSessionUrl" windowState="${windowState}">
 			     <portlet:param name="sessionId" value="${completedSessions.sessionId}" />
 			     <portlet:param name="action" value="viewSession" />
 		      </portlet:renderURL>
-		      <portlet:renderURL var="editSessionUrl" portletMode="EDIT" windowState="MAXIMIZED">
+		      <portlet:renderURL var="editSessionUrl" portletMode="EDIT" windowState="${windowState}">
 		     	<portlet:param name="sessionId" value="${completedSessions.sessionId}" />
 		     	<portlet:param name="action" value="editSession" />
 		      </portlet:renderURL>

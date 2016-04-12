@@ -168,7 +168,7 @@
         </div>
         <div id="tabs-otherActions">
         	
-        	<portlet:renderURL var="viewAllSessions" portletMode="VIEW" windowState="MAXIMIZED">
+        	<portlet:renderURL var="viewAllSessions" portletMode="VIEW" windowState="${windowState}">
         		<portlet:param name="action" value="viewAllSessions"/>
             </portlet:renderURL>
         	<a href="${viewAllSessions}" class="btn btn-default uportal-button"><spring:message code="viewAllSessions" text="viewAllSessions" /></a>

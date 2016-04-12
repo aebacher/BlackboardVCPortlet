@@ -38,7 +38,7 @@
   		<th style="text-align: left;"><spring:message code="sessionSummary"/></th>
   		<th style="text-align: right;">
   		<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-		  <portlet:renderURL var="editSessionUrl" portletMode="EDIT" windowState="MAXIMIZED" >
+		  <portlet:renderURL var="editSessionUrl" portletMode="EDIT" windowState="${windowState}" >
 		    <portlet:param name="sessionId" value="${session.sessionId}" />
 		    <portlet:param name="action" value="editSession" />
 		  </portlet:renderURL>
@@ -105,7 +105,7 @@
 			<th style="text-align: left;">Telephony Information</th>
 			<th style="text-align: right">
 				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-					<portlet:renderURL var="configTelephonyURL" portletMode="EDIT" windowState="MAXIMIZED">
+					<portlet:renderURL var="configTelephonyURL" portletMode="EDIT" windowState="${windowState}">
 						<portlet:param name="sessionId" value="${session.sessionId}" />
 					    <portlet:param name="action" value="configureTelephony" />
 					</portlet:renderURL>
@@ -189,7 +189,7 @@
 		    </ul>
 		    <br/>
 		    <sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-		    	<portlet:renderURL var="addParticipantsUrl" portletMode="EDIT" windowState="MAXIMIZED" >
+		    	<portlet:renderURL var="addParticipantsUrl" portletMode="EDIT" windowState="${windowState}">
 				    <portlet:param name="sessionId" value="${session.sessionId}" />
 				    <portlet:param name="action" value="addParticipants" />
 				</portlet:renderURL>
@@ -268,7 +268,7 @@
 	        		<br/>
 	        	</c:otherwise>
         	</c:choose>
-			<portlet:renderURL var="addMediaFileUrl" portletMode="EDIT" windowState="MAXIMIZED" >
+			<portlet:renderURL var="addMediaFileUrl" portletMode="EDIT" windowState="${windowState}" >
 			    <portlet:param name="sessionId" value="${session.sessionId}" />
 			    <portlet:param name="action" value="manageMediaFiles" />
 			</portlet:renderURL>

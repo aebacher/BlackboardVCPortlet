@@ -29,7 +29,7 @@
     </div>
 </c:if>
 
-<portlet:renderURL var="viewSessionUrl" windowState="MAXIMIZED" portletMode="VIEW">
+<portlet:renderURL var="viewSessionUrl" windowState="${windowState}" portletMode="VIEW">
    <portlet:param name="sessionId" value="${session.sessionId}" />
    <portlet:param name="action" value="viewSession" />
 </portlet:renderURL>

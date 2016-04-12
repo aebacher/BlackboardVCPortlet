@@ -10,6 +10,11 @@
     <portlet:namespace />
 </c:set>
 <c:set var="prefs" scope="request" value="${renderRequest.preferences.map}" />
+<c:set var="windowState" value="MAXIMIZED"/>
+<c:if test="${!empty windowStateOverride}">
+    <c:set var="windowState" value="${windowStateOverride}"/>
+</c:if>
+
 
 <style>
 div[id^="${n}"] th{
