@@ -73,7 +73,7 @@ blackboardPortlet.jQuery(function() {
   var recordings = 
 	  <json:array var="recording" items="${recordings}" prettyPrint="true" escapeXml="false">
 	    <json:array>
-	    <portlet:renderURL var="editRecordingUrl" portletMode="EDIT" windowState="MAXIMIZED">
+	    <portlet:renderURL var="editRecordingUrl" portletMode="EDIT" windowState="${windowState}">
 	      <portlet:param name="recordingId" value="${recording.recordingId}" />
 	      <portlet:param name="action" value="editRecording" />
         </portlet:renderURL>

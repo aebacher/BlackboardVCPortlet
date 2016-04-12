@@ -24,7 +24,7 @@
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
-<portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="MAXIMIZED" />
+<portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="${windowState}" />
 <table width="100%" style='margin-bottom: 10px;'>
     <tbody>
       <tr>
@@ -159,7 +159,7 @@ blackboardPortlet.jQuery(function() {
   var upcomingSessions = 
 	  <json:array var="session" items="${upcomingSessions}" prettyPrint="true" escapeXml="false">
 	    <json:array>
-	    <portlet:renderURL var="viewSessionUrl" windowState="MAXIMIZED">
+	    <portlet:renderURL var="viewSessionUrl" windowState="${windowState}">
 	     <portlet:param name="sessionId" value="${session.sessionId}" />
 	     <portlet:param name="action" value="viewSession" />
 	    </portlet:renderURL>
@@ -201,7 +201,7 @@ blackboardPortlet.jQuery(function() {
 	  var completedSessions = 
 		  <json:array var="completedSessions" items="${completedSessions}" prettyPrint="true" escapeXml="false">
 		    <json:array>
-		    <portlet:renderURL var="viewSessionUrl" windowState="MAXIMIZED">
+		    <portlet:renderURL var="viewSessionUrl" windowState="${windowState}">
 		     <portlet:param name="sessionId" value="${completedSessions.sessionId}" />
 		     <portlet:param name="action" value="viewSession" />
 		    </portlet:renderURL>

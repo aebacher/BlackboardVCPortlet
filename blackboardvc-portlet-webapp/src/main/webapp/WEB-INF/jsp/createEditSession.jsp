@@ -230,7 +230,7 @@
                   <input class="btn btn-default uportal-button" value="${saveSession}" type="submit">
                 </td>
                 <td>
-                  <portlet:renderURL var="cancelAction" portletMode="VIEW" windowState="MAXIMIZED" />
+                  <portlet:renderURL var="cancelAction" portletMode="VIEW" windowState="${windowState}"/>
                   <a href="${cancelAction}" class="btn btn-default uportal-button"><spring:message code="cancel" text="cancel"/></a>
                 </td>
             </tr>
