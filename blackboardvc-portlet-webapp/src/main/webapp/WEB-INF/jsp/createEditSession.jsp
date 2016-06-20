@@ -28,10 +28,6 @@
 	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
 	</div>
 </c:if>
-<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav" role="tablist">
-    <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active ui-tabs-selected" role="tab" tabindex="0" aria-controls="Pluto_996_u115l1n107_12861_tabs-1" aria-labelledby="ui-id-1" aria-selected="true"><a href="#Pluto_996_u115l1n107_12861_tabs-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Scheduled sessions</a></li>
-    <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="Pluto_996_u115l1n107_12861_tabs-2" aria-labelledby="ui-id-2" aria-selected="false"><a href="#Pluto_996_u115l1n107_12861_tabs-2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Past sessions</a></li>
-  </ul>
 <h2><spring:message code="scheduleSession" text="scheduleSession"/></h2>
 <portlet:actionURL portletMode="EDIT" var="saveSessionActionUrl">
   <portlet:param name="action" value="saveSession" />
@@ -99,9 +95,11 @@
 		  <h4>Session Details</h4>
 
 		  <div class="form-group row">
-		    <label for="boundaryTime" class="col-md-4"><spring:message code="earlySessionEntry" text="earlySessionEntry"/></label>
+		  	<div class="col-md-4">
+		    <label for="boundaryTime" ><spring:message code="earlySessionEntry" text="earlySessionEntry"/></label>
 		        	<spring:message code="tooltip.earlySessionEntry" text="tooltip.earlySessionEntry" var="tooltipEarlySessionEntry" htmlEscape="false" />
 					&nbsp;<a href="#" title="${ tooltipEarlySessionEntry}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+			</div>
 		    <div class="col-md-8">
 		    	<form:select path="boundaryTime">
 		            <form:option value="15"><spring:message code="boundryTime15Minutes" text="boundryTime15Minutes"/></form:option>
@@ -204,7 +202,7 @@
 			            	<spring:message code="tooltip.allowInSessionInvitations" text="tooltip.allowInSessionInvitations" var="tooltipallowInSessionInvitations" htmlEscape="false" />
 							&nbsp;<a href="#" title="${ tooltipallowInSessionInvitations}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 						</div>
-						<div class="col-md-8"
+						<div class="col-md-8">
 							<form:checkbox path="allowInSessionInvites"/>
 						</div>
 			        </div>
@@ -220,11 +218,13 @@
 			          <form:hidden path="allowInSessionInvites"/>
 			        </c:otherwise>
 			      </c:choose>
-			      <div class="form-group">
+			      <div class="form-group row">
+			      	<div class="col-md-offset-4 col-md-8">
+			      	<a href="${cancelAction}" class="btn btn-default uportal-button"><spring:message code="cancel" text="cancel"/></a>
 			      	<spring:message code="saveSession" var="saveSession" text="saveSession"/>
                   <input class="btn btn-success uportal-button" value="${saveSession}" type="submit">
                   <portlet:renderURL var="cancelAction" portletMode="VIEW" windowState="${windowState}"/>
-                  <a href="${cancelAction}" class="btn btn-default uportal-button"><spring:message code="cancel" text="cancel"/></a>
+                  </div>
 			      </div>
 		  </div>
   </spring:nestedPath>
