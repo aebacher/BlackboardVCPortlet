@@ -42,8 +42,8 @@
 	<h3><spring:message code="enterInfo" text="enterInfo"/></h3>
 	
 		<div class="form-group row">
-		    <label for="sessionName" class="col-md-4"><spring:message code="sessionName" text="sessionName"/></label>
-		    <div class="col-md-8">
+		    <label for="sessionName" class="col-md-3"><spring:message code="sessionName" text="sessionName"/></label>
+		    <div class="col-md-9">
 			    <c:choose>
 	                <c:when test="${sessionForm.newSession}">
 	                    <form:input path="sessionName" placeholder="enter session name..." class="uportal-input-text" />&nbsp;&nbsp;<form:errors path="sessionName" cssClass="error"/>
@@ -57,8 +57,8 @@
 		  </div>
 
 		  <div class="form-group row">
-		    <label for="startDateAndTime" class="col-md-4"><spring:message code="startDateAndTime" text="startDateAndTime"/></label>
-		    <div class="col-md-8">
+		    <label for="startDateAndTime" class="col-md-3"><spring:message code="startDateAndTime" text="startDateAndTime"/></label>
+		    <div class="col-md-9">
 				  <form:errors path="" cssClass="error"/>
 				  <span class="datepair">
 		          <form:input id="${n}startdatepicker" class="date start" path="startDate" style="width: 82px;"/>&nbsp;
@@ -76,8 +76,8 @@
 		  </div>
 	
 		<div class="form-group row">
-		    <label for="endDateAndTime" class="col-md-4"><spring:message code="endDateAndTime" text="endDateAndTime"/></label>
-		   <div class="col-md-8">
+		    <label for="endDateAndTime" class="col-md-3"><spring:message code="endDateAndTime" text="endDateAndTime"/></label>
+		   <div class="col-md-9">
 			   <span class="datepair">
 	          <form:input id="${n}enddatepicker" class="date end" path="endDate" style="width: 82px;"/>&nbsp;
 	          
@@ -95,12 +95,12 @@
 		  <h4>Session Details</h4>
 
 		  <div class="form-group row">
-		  	<div class="col-md-4">
+		  	<div class="col-md-3">
 		    <label for="boundaryTime" ><spring:message code="earlySessionEntry" text="earlySessionEntry"/></label>
 		        	<spring:message code="tooltip.earlySessionEntry" text="tooltip.earlySessionEntry" var="tooltipEarlySessionEntry" htmlEscape="false" />
 					&nbsp;<a href="#" title="${ tooltipEarlySessionEntry}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 			</div>
-		    <div class="col-md-8">
+		    <div class="col-md-9">
 		    	<form:select path="boundaryTime">
 		            <form:option value="15"><spring:message code="boundryTime15Minutes" text="boundryTime15Minutes"/></form:option>
 		            <form:option value="30"><spring:message code="boundryTime30Minutes" text="boundryTime30Minutes"/></form:option>
@@ -118,13 +118,13 @@
 		      <c:choose>
 		        <c:when test="${fullAccess}">
 			        <div class="form-group row">
-			        	<div class="col-md-4">
+			        	<div class="col-md-3">
 			        		<span class="uportal-channel-strong"><spring:message code="maxSimultaneousTalkers" text="maxSimultaneousTalkers"/></span>
 			            	<spring:message code="tooltip.maxSimultaneousTalkers" text="tooltip.maxSimultaneousTalkers" var="tooltipMaxSimultaneousTalkers" htmlEscape="false" />
 							&nbsp;<a href="#" title="${ tooltipMaxSimultaneousTalkers}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-9">
 							<form:select path="maxTalkers">
 			                <c:forEach var="i" begin="1" end="${serverConfiguration.maxAvailableTalkers}" step="1">
 			                  <form:option value="${i}">${i}</form:option>
@@ -133,12 +133,12 @@
 			          </div>
 			        </div>
 			        <div class="form-group row">
-			        	<div class="col-md-4">
+			        	<div class="col-md-3">
 				        	<span class="uportal-channel-strong"><spring:message code="maxCameras" text="maxCameras"/></span>
 			            	<spring:message code="tooltip.maxCamera" text="tooltip.maxCamera" var="tooltipMaxCamera" htmlEscape="false" />
 							&nbsp;<a href="#" title="${ tooltipMaxCamera}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-9">
 							<form:select path="maxCameras">
 			                <c:forEach var="i" begin="1" end="${serverConfiguration.maxAvailableCameras}" step="1">
 			                  <form:option value="${i}">${i}</form:option>
@@ -147,62 +147,62 @@
 			          </div>
 			        </div>
 			        <div class="form-group row">
-			        	<div class="col-md-4">
+			        	<div class="col-md-3">
 				        	<span class="uportal-channel-strong"><spring:message code="supervised" text="supervised"/></span>
 			            	<spring:message code="tooltip.supervised" text="tooltip.supervised" var="tooltipSupervised" htmlEscape="false" />
 							&nbsp;<a href="#" title="${ tooltipSupervised}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-9">
 							<form:checkbox path="mustBeSupervised"/>
 						</div>
 			        </div>
 			        <div class="form-group row">
-			        	<div class="col-md-4">
+			        	<div class="col-md-3">
 				        	<span class="uportal-channel-strong"><spring:message code="allPermissions" text="allPermissions"/></span>
 			            	<spring:message code="tooltip.allPermissions" text="tooltip.allPermissions" var="tooltipAllPermissions" htmlEscape="false" />
 							&nbsp;<a href="#" title="${ tooltipAllPermissions}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-9">
 							<form:checkbox path="permissionsOn"/>
 						</div>
 			        </div>
 			        <div class="form-group row">
-			        	<div class="col-md-4">
+			        	<div class="col-md-3">
 				        	<span class="uportal-channel-strong"><spring:message code="raiseHandOnEntry" text="raiseHandOnEntry"/></span>
 			            	<spring:message code="tooltip.raiseHandOnEntry" text="tooltip.raiseHandOnEntry" var="tooltipRaiseHandOnEntry" htmlEscape="false" />
 							&nbsp;<a href="#" title="${ tooltipRaiseHandOnEntry}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-9">
 							<form:checkbox path="raiseHandOnEnter"/>
 						</div>
 			        </div>
 			        <div class="form-group row">
-			        	<div class="col-md-4">
+			        	<div class="col-md-3">
 				        	<span class="uportal-channel-strong"><spring:message code="recordingMode" text="recordingMode"/></span>
 			            	<spring:message code="tooltip.recordingMode" text="tooltip.recordingMode" var="tooltipRecordingMode" htmlEscape="false" />
 							&nbsp;<a href="#" title="${ tooltipRecordingMode}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<form:select path="recordingMode" items="${recordingModes}" />
 						</div>
 			        </div>
 			        <div class="form-group row">
-			        	<div class="col-md-4">
+			        	<div class="col-md-3">
 				        	<span class="uportal-channel-strong"><spring:message code="hideNamesInRecordings" text="hideNamesInRecordings"/></span>
 			            	<spring:message code="tooltip.hideNamesInRecordings" text="tooltip.hideNamesInRecordings" var="tooltiphideNamesInRecordings" htmlEscape="false" />
 							&nbsp;<a href="#" title="${ tooltiphideNamesInRecordings}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-9">
 							<form:checkbox path="hideParticipantNames"/>
 						</div>
 			        </div>
 			        <div class="form-group row">
-			        	<div class="col-md-4">
+			        	<div class="col-md-3">
 				        	<span class="uportal-channel-strong"><spring:message code="allowInSessionInvitations" text="allowInSessionInvitations"/></span>
 			            	<spring:message code="tooltip.allowInSessionInvitations" text="tooltip.allowInSessionInvitations" var="tooltipallowInSessionInvitations" htmlEscape="false" />
 							&nbsp;<a href="#" title="${ tooltipallowInSessionInvitations}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-9">
 							<form:checkbox path="allowInSessionInvites"/>
 						</div>
 			        </div>
@@ -219,7 +219,7 @@
 			        </c:otherwise>
 			      </c:choose>
 			      <div class="form-group row">
-			      	<div class="col-md-offset-4 col-md-8">
+			      	<div class="col-md-offset-4 col-md-9">
 			      	<a href="${cancelAction}" class="btn btn-default uportal-button"><spring:message code="cancel" text="cancel"/></a>
 			      	<spring:message code="saveSession" var="saveSession" text="saveSession"/>
                   <input class="btn btn-success uportal-button" value="${saveSession}" type="submit">
