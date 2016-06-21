@@ -316,7 +316,7 @@ h1{
     font-weight: 700;
 }
 
-.my-uw .btn-flat, .my-uw .btn-flat:hover, .my-uw .btn-default{
+.my-uw .btn-flat, .my-uw .btn-flat:hover{
     background-color: #0479a8;
     box-shadow: 4px 4px 6px #bcbcbc;
     transition: none;
