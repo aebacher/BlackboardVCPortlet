@@ -294,3 +294,145 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     font-weight: 600;
     cursor: pointer;
 }
+
+/* Overriding Styles to be inline with http://f5c4d8.axshare.com/#p=home */
+h1{
+    font-size: 32px;
+    font-weight: 700;
+    color:#212121;
+}
+
+.ui-tabs .ui-tabs-panel .centered-content{
+    text-align: center;
+}
+
+.ui-tabs .ui-tabs-panel .centered-content h2{
+    font-size: 30px;
+    font-weight: 700;
+}
+.ui-tabs .ui-tabs-panel .centered-content p.highlighted-link a {
+    color: #0479a8 !important;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.my-uw .btn-flat, .my-uw .btn-flat:hover{
+    background-color: #0479a8;
+    box-shadow: 4px 4px 6px #bcbcbc;
+    transition: none;
+    transform:none;
+    border-bottom: none;
+}
+.my-uw .btn-flat{
+    margin: 20px 0px;
+    padding: 15px 20px;
+    font-weight: 700;
+    font-size: 20px;
+}
+.bb-content-container .form-group .col-md-3{
+    text-align: right;
+    
+}
+.bb-content-container h4{
+    text-decoration: underline;
+}
+.bb-content-container .form-group .col-md-3 select{
+    float: left;
+}
+.blackboardVCRoot div[id^="Pluto_996_u115l1n107_12861_"] th{
+    background-color: #ffffff !important;
+    color: #000000;
+    font-size: 16px;
+    border-bottom: solid 1px #000000;
+    line-height: 40px;
+}
+div[id^="Pluto_996_u115l1n107_12861_"] td{
+    line-height: 40px;
+}
+
+th, td{
+    padding:0 10px;
+}
+td{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.blackboardVCRoot .help-link {
+    float: none;
+    padding-bottom: 1em;
+    clear: both;
+    height: 45px;
+}
+
+.blackboardVCRoot .help-link a{
+    float: right;
+}
+
+.btn-small-blue{
+    background-color: #0479a8;
+    box-shadow: none;
+    transition: none;
+    transform:none;
+    border-bottom: none;
+    color: #ffffff;
+    font-size: 16px;
+    margin-left: 30px;
+    transform: none;
+    background: #ffffff;
+    color: #0479a8;
+    border: solid 1px #0479a8;
+}
+.btn-small-blue:hover, .btn-small-blue:active{
+    background: #ffffff;
+    color: #0479a8;
+    border: solid 1px #0479a8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
