@@ -307,14 +307,7 @@
 <div class="viewSession">
 	<div class="session-large-heading"><spring:message code="recordings" text="Recordings" /></div>
 	<div class="row">
-		<div class="col-md-3">
-            <label for="recordings">
-                <span class="uportal-channel-strong">
-                    <spring:message code="recordings" text="Recordings" />
-                </span>
-            </label>
-		</div>
-		<div class="col-md-9">
+		<div class="col-md-12">
 			<c:choose>
 				<c:when test="${!empty recordings }">
 			<ul>
