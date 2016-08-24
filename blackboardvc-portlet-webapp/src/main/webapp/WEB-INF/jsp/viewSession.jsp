@@ -247,9 +247,12 @@
 							  </c:otherwise>
 							  </c:choose>
 							  <br/>
-				              <span class="btn btn-default uploadButton">
+				              <span class="uploadButton">
 							     <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
 				              </span>
+				              <br />
+				              <spring:message code="presentationFileDesc" var="presentationFileDesc" text="presentationFileDesc"/>
+				              
 				              <br/>
 				              <c:if test="${!empty presentationUploadError}">
 				                  <span class="error">${presentationUploadError}</span>
@@ -264,7 +267,7 @@
            <div class="view-session-media">
 
            	<div class="form-group row">
-		    <label for="sessionName" class="col-md-3"><spring:message code="mediaFiles" text="Media Files" /><spring:message code="sessionName" text="sessionName"/></label>
+		    <label for="sessionName" class="col-md-3"><spring:message code="mediaFiles" text="Media Files" /></label>
 		    <div class="col-md-9">
 			    <c:choose>
 					<c:when test="${!empty multimedias }">
@@ -283,7 +286,11 @@
 				    <portlet:param name="sessionId" value="${session.sessionId}" />
 				    <portlet:param name="action" value="manageMediaFiles" />
 				</portlet:renderURL>
-		    	<a href="${addMediaFileUrl}">Upload Media File(s)</a>
+				<!--<input value="${addMediaFileUrl}" name="action" class="btn btn-default uportal-button" type="submit">-->
+				 <br />
+				 <spring:message code="mediaFilesDesc" var="mediaFilesDesc" text="mediaFilesDesc"/>
+				                        	
+		    	<a href="${addMediaFileUrl}" class="btn btn-default uportal-button">Upload Media File(s)</a>
 	        </div>
 		  </div>
            	</div>
