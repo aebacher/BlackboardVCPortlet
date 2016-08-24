@@ -298,11 +298,17 @@
 	</div>
 </div>
 
-<table class="viewSession">
+<div class="row">
+	<div class="col-md-12">
+		<hr />
+	</div>
+</div>
+
+<div class="viewSession">
 	<a name="recordings"></a>
-	<div class="session-large-heading">Upload media and presentation files</div>
-	<tr class="odd">
-		<td>
+	<div class="session-large-heading"><spring:message code="recordings" text="Recordings" /></div>
+	<div class="row">
+		<div class="col-md-3">
             <label for="recordings">
                 <span class="uportal-channel-strong">
                     <spring:message code="recordings" text="Recordings" />
@@ -310,8 +316,8 @@
                 <spring:message code="tooltip.recordings" text="tooltip.recordings" var="tooltipRecordings" htmlEscape="false" />
                 &nbsp;<a href="#" title="${ tooltipRecordings}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
             </label>
-		</td>
-		<td>
+		</div>
+		<div class="col-md-9">
 			<c:choose>
 				<c:when test="${!empty recordings }">
 			<ul>
@@ -324,9 +330,9 @@
 				No Recordings available
 			</c:otherwise>
 			</c:choose>
-		</td>
-	</tr>
-</table>   
+		</div>
+	</div>   
+</div>	
 <div class="row">
 	<div class="col-md-12">
 		<a href="${backUrl}" class="btn btn-success uportal-button">Save Session</a>
